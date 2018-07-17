@@ -1,0 +1,2 @@
+# Ignore neovim plugins managed by minpac
+neovim/.config/nvim/pack/**
