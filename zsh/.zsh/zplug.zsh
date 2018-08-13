@@ -21,18 +21,3 @@ zplug "junegunn/fzf-bin", \
     rename-to:"fzf", \
     frozen:1
 
-# TODO: switch back to b4b4r07/zsh-history once
-zplug 'kampka/zsh-history'
-if zplug check 'kampka/zsh-history'; then
-    export ZSH_HISTORY_FILE="$HOME/.zsh_history.db"
-    export ZSH_HISTORY_FILTER="fzy -l 25"
-    # History per directory
-    export ZSH_HISTORY_KEYBIND_GET_BY_DIR="^r^d"
-    # All histories
-    export ZSH_HISTORY_KEYBIND_GET_ALL="^r"
-    # Run any SQLs on original selector I/F (with screen)
-    export ZSH_HISTORY_KEYBIND_SCREEN="^r^r"
-    # substring
-    export ZSH_HISTORY_KEYBIND_ARROW_UP="^p"
-    export ZSH_HISTORY_KEYBIND_ARROW_DOWN="^n"
-fi

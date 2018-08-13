@@ -1,0 +1,22 @@
+[core]
+  editor = "vim"
+  selectcmd = "fzf --multi --ansi --height 40% --reverse --no-sort"
+  tomlfile = "$HOME/.config/history/config.toml"
+
+[history]
+  path = "$HOME/.local/share/zsh-history/history.ltsv"
+  backup_path = "$HOME/.local/share/zsh-history"
+  ignore_words = []
+  use_color = false
+  [history.sync]
+    id = ""
+    token = "$GITHUB_TOKEN"
+    size = 100
+
+[screen]
+  filter_dir = false
+  filter_branch = false
+  filter_hostname = false
+  columns = ["{{.Time}}", "{{.Status}}", "{{.Command}}" ]
+  status_ok = " "
+  status_ng = "x"

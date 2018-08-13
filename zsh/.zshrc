@@ -29,5 +29,3 @@ if [[ -f ~/.zplug/init.zsh ]]; then
     fi
     zplug load
 fi
-
-
