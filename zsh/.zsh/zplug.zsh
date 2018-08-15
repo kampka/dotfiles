@@ -19,5 +19,5 @@ zplug "junegunn/fzf-bin", \
     as:command, \
     from:gh-r, \
     rename-to:"fzf", \
-    frozen:1
-
+    frozen:1, \
+    if:"(( ! $+commands[fzf] ))"
