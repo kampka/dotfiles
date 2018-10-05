@@ -1,0 +1,16 @@
+
+NIXPATH_add() {
+  # Adds a path to the NIX_PATH
+  # Although NIX_PATH looks similar to PATH, it's behaviour is different.
+  # See https://nixos.org/nix/manual/#sec-common-env
+  
+  path_add NIX_PATH "$@"
+}
+
+
+envrc_dir() {
+  # Returns the directory name of the sourced .envrc file
+  # Is not safe to use with source_up !
+
+  dirname "$(find_up .envrc)"
+}
