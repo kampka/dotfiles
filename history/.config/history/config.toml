@@ -1,6 +1,6 @@
 [core]
   editor = "vim"
-  selectcmd = "fzf --multi --ansi --height 40% --reverse --no-sort"
+  selectcmd = "fzf --multi --ansi --height 40% --reverse"
   tomlfile = "$HOME/.config/history/config.toml"
 
 [history]
