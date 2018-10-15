@@ -3,7 +3,7 @@ font = Ubuntu Mono derivative Powerline 12
 allow_bold = true
 
 scrollback_lines = 100000
-browser = chromium
+browser = firefox
 
 # Solarized dark color scheme
 [colors]
