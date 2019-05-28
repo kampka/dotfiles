@@ -1,4 +1,24 @@
+source_up() {
+  echo "source_up is insecure. Use source_up_secure instead." 1>&2
+  exit 1
+}
 
+source_up_secure() {
+  local hash=$1
+  local file=$2
+  local dir
+  if [[ -z $file ]]; then
+    file=.envrc
+  fi
+  dir=$(cd .. && find_up "$file")
+  if [[ -n $dir ]]; then
+    if ! echo "$hash $dir" | sha1sum -c --quiet - ; then
+      echo "envrc file $dir does not match expected hash sum $hash" 1>&2
+      exit 1
+    fi
+    source_env "$dir"
+  fi
+}
 NIXPATH_add() {
   # Adds a path to the NIX_PATH
   # Although NIX_PATH looks similar to PATH, it's behaviour is different.
