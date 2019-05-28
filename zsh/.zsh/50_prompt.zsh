@@ -5,7 +5,7 @@ precmd() {
   psvar=()
   vcs_info
   [[ -n $vcs_info_msg_0_ ]] && psvar[1]="$vcs_info_msg_0_"
-  [[ -n $NIX_SHELL_ENV ]] && psvar[2]="$NIX_SHELL_ENV"
+  [[ -n $name ]] && psvar[2]="$name"
   is_git_crypt_locked && psvar[3]="1"
 }
 
