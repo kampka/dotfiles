@@ -12,4 +12,4 @@ precmd() {
 
 PROMPT="
 ┌──%(2V.%F{136}%B[%2v]%b.)%f(%F{red}%n%F{white}@%F{64}%m%f: %F{243}%/%(1V.%F{61}%1v.)%f%(3V.%F{red}%B[LOCKED]%b.)%f #%b%F{grey})%E
-└─╼ "
+└─◉ "
