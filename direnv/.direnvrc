@@ -23,7 +23,19 @@ NIXPATH_add() {
   # Adds a path to the NIX_PATH
   # Although NIX_PATH looks similar to PATH, it's behaviour is different.
   # See https://nixos.org/nix/manual/#sec-common-env
-  
+
   path_add NIX_PATH "$@"
 }
 
+use_nix() {
+  local NIX_NO_WATCH_DEFAULT="${NIX_NO_WATCH_DEFAULT:false}"
+  if [[ "$1" == "--no-watch-default" ]]; then
+    NIX_NO_WATCH_DEFAULT="true"
+    shift
+  fi
+  direnv_load nix-shell --show-trace "$@" --run "$(join_args "$direnv" dump)"
+  if [[ "${NO_WATCH_DEFAULT:false}" == "false" ]]; then
+    watch_file default.nix
+    watch_file shell.nix
+  fi
+}
