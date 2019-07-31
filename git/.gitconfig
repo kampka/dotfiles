@@ -1,0 +1,23 @@
+[user]
+	name = Christian Kampka
+	email = christian@kampka.net
+	signingkey = DB3FF049
+	editor = vim
+[sendemail]
+	smtpEncryption = tls
+	smtpServer = smtp.gmail.com
+	smtpUser = christian@kampka.net
+	smtpServerPort = 587
+[color]
+	pager = true
+	ui = auto
+[merge]
+	tool = meld
+[alias]
+	uncommit = reset --soft
+	bdiff = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+[diff]
+	tool = vimdiff
+	guitool = meld
+[push]
+	default = nothing
