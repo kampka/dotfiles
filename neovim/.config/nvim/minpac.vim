@@ -13,11 +13,23 @@ if exists('*minpac#init')
   call minpac#add('k-takata/minpac', {'type': 'opt'})
 
   " Additional plugins here.
+  call minpac#add('altercation/vim-colors-solarized')
   call minpac#add('tpope/vim-fugitive')
   " call minpac#add('vim-jp/syntax-vim-ex')
+  call minpac#add('vim-airline/vim-airline')
+  call minpac#add('vim-airline/vim-airline-themes')
+  call minpac#add('scrooloose/nerdtree')
+  call minpac#add('bling/vim-bufferline')
+
+  " Language specific plugins
+  " Nix / NixOS
+  call minpac#add('LnL7/vim-nix')
 endif
 
 " Plugin settings here.
+
+let g:airline_solarized_bg='dark'
+let g:airline_powerline_fonts = 1
 
 " Define user commands for updating/cleaning the plugins.
 " Each of them loads minpac, reloads .vimrc to register the
