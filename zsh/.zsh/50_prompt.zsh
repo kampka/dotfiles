@@ -1,3 +1,7 @@
+# Before styling the prompt, make sure it is reset to the default prompt theme
+prompt default
+
+# Autoload VSC info 
 autoload -Uz vcs_info
 
 
