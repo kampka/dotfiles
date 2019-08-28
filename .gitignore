@@ -1,3 +1,6 @@
 # Ignore neovim plugins managed by minpac
 neovim/.config/nvim/pack/**
 
+# Ignore font cache uuids
+fonts/**/.uuid
+
