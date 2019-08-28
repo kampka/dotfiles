@@ -3,8 +3,8 @@ zplug "zplug/zplug", hook-build:'zplug --self-manage'
 
 zplug "~/.zsh", from:local, use:"<->_*.zsh"
 
-zplug "kampka/enhancd", use:init.sh
-if zplug check "kampka/enhancd"; then
+zplug "b4b4r07/enhancd", use:init.sh
+if zplug check "b4b4r07/enhancd"; then
     export ENHANCD_FILTER="fzf --height 50% --reverse --ansi --preview 'ls -l {}' --preview-window down"
     export ENHANCD_DOT_SHOW_FULLPATH=1
 fi
