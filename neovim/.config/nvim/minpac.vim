@@ -21,6 +21,14 @@ if exists('*minpac#init')
   call minpac#add('scrooloose/nerdtree')
   call minpac#add('bling/vim-bufferline')
 
+  " FZF / Ctrlp for file navigation
+  if executable('fzf')
+    call minpac#add('junegunn/fzf')
+    call minpac#add('junegunn/fzf.vim')
+  else
+    call minpac#add('ctrlpvim/ctrlp.vim')
+  endif
+
   " Language specific plugins
   " Nix / NixOS
   call minpac#add('LnL7/vim-nix')
