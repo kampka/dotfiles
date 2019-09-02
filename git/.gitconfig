@@ -3,6 +3,8 @@
 	email = christian@kampka.net
 	signingkey = 0x1CBE9645DD68E915
 	editor = vim
+[commit]
+    gpgSign = true
 [sendemail]
 	smtpEncryption = tls
 	smtpServer = smtp.gmail.com
@@ -14,7 +16,7 @@
 [merge]
 	tool = meld
 [alias]
-	uncommit = reset --soft
+	uncommit = reset --soft HEAD^
 	bdiff = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 [diff]
 	tool = vimdiff
