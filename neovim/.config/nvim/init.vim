@@ -33,6 +33,33 @@ if(isdirectory(expand($HOME . "/.config/nvim/pack/minpac/start/vim-colors-solari
     colorscheme solarized
 endif
 
+
+function! s:EnsureDirectory(path, ...)
+  let mode = get(a:, 1, 0700)
+  let exp = expand(a:path)
+  if !isdirectory(exp)
+    call mkdir(exp, "p", mode)
+  endif
+  return exp
+endfunction
+
+function! s:SetupStateDirs()
+
+  " Create vim state dir
+  let l:vimStateDir = s:EnsureDirectory($HOME."/.local/share/nvim")
+  
+  " Use undo file to store persistent undo informatioon
+  let &undodir = s:EnsureDirectory(l:vimStateDir."/undo")
+  set undodir?
+  set undofile
+  
+  " Store backup files in vim state dir
+  let &backupdir = s:EnsureDirectory(l:vimStateDir."/backup")
+  set backupdir?
+  
+endfunction
+autocmd vimenter * call s:SetupStateDirs()
+
 " Set split separator to Unicode box drawing character
 set encoding=utf8
 set fillchars=vert:│
