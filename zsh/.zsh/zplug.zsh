@@ -5,7 +5,7 @@ zplug "~/.zsh", from:local, use:"<->_*.zsh"
 
 # enhancd introduces an issue with revision 0d39876
 # see https://github.com/b4b4r07/enhancd/issues/101
-zplug "b4b4r07/enhancd", use:init.sh, at:718bd319cce2d985a90211f3b6c00851995f039e
+zplug "b4b4r07/enhancd", use:init.sh
 if zplug check "b4b4r07/enhancd"; then
     export ENHANCD_FILTER="fzf --height 50% --reverse --ansi --preview 'ls -l {}' --preview-window down"
     export ENHANCD_DOT_SHOW_FULLPATH=1
