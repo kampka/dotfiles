@@ -8,29 +8,23 @@ if [[ -n $VIMRUNTIME ]]; then
     return 0
 fi
 
-# auto-install zplug
-if [[ ! -d ~/.zplug ]]; then
-    echo '[zshrc] installing zplug...'
-    git clone https://github.com/zplug/zplug ~/.zplug
+# auto-install zplugin
+if [[ ! -d ~/.zplugin ]]; then
+    echo '[zshrc] installing zplugin ...'
+    mkdir ~/.zplugin
+    git clone https://github.com/zdharma/zplugin.git ~/.zplugin/bin
 fi
 
-if [[ -f ~/.zplug/init.zsh ]]; then
-    export ZPLUG_LOADFILE=~/.zsh/zplug.zsh
+if [[ -f ~/.zplugin/bin/zplugin.zsh ]]; then
+    source ~/.zplugin/bin/zplugin.zsh
 
-    source ~/.zplug/init.zsh
-
-    # zplug checks can be anoyingly noisy when checking verbosely,
-    # even if there is nothing to do.
-    # To reduce that noise, first check quietly and repeat the check verbosely
-    # if there is something to be verbose about.
-    if ! zplug check ; then
-        if ! zplug check --verbose; then
-            printf "Install? [y/N]: "
-            if read -q; then
-                echo; zplug install
-            fi
-            echo
-        fi
+    if ! find ~/.zplugin/bin/zplugin.zsh.zwc -mtime +7 > /dev/null; then
+        zplugin self-update
     fi
-    zplug load
+
+    autoload -Uz _zplugin
+    (( ${+_comps} )) && _comps[zplugin]=_zplugin
+
+    source ~/.zsh/zplugin.zsh
 fi
+
