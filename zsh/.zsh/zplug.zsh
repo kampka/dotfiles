@@ -22,3 +22,5 @@ zplug "junegunn/fzf-bin", \
     rename-to:"fzf", \
     frozen:1, \
     if:"(( ! $+commands[fzf] ))"
+
+zplug "chisui/zsh-nix-shell", use:nix-shell.plugin.zsh
