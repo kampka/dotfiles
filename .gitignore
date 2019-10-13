@@ -4,3 +4,5 @@ neovim/.config/nvim/pack/**
 # Ignore font cache uuids
 fonts/**/.uuid
 
+# Ignore zsh history database
+history/**/history.ltsv
