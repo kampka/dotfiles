@@ -9,7 +9,7 @@ precmd() {
   psvar=()
   vcs_info
   [[ -n $vcs_info_msg_0_ ]] && psvar[1]="$vcs_info_msg_0_"
-  [[ -n $name ]] && [[ -n "$IN_NIX_SHELL" ]] && psvar[2]="$name"
+  [[ -n $name ]] && [[ -n "$IN_NIX_SHELL" ]] && psvar[2]="${name#'lorri-keep-env-hack-'}"
   is_git_crypt_locked && psvar[3]="1"
 }
 

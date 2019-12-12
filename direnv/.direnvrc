@@ -35,3 +35,14 @@ envrc_dir() {
 
   dirname "$(find_up .envrc)"
 }
+
+use_lorri() {
+  if command -v lorri >/dev/null ; then
+    eval "$(lorri direnv)"
+  else
+    # fall back to using direnv's builtin nix support
+    # to prevent bootstrapping problems.
+    echo "Lorri is not installed. Falling back to standard nix shell ..."
+    use nix
+  fi
+}
