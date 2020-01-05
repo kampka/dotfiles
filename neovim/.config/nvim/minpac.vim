@@ -34,6 +34,8 @@ if exists('*minpac#init')
   call minpac#add('LnL7/vim-nix')
   " Zig / Ziglang
   call minpac#add('ziglang/zig.vim')
+  " VimWiki
+  call minpac#add('vimwiki/vimwiki')
 endif
 
 " Plugin settings here.

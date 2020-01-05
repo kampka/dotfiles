@@ -26,6 +26,7 @@ endfunction
 " Load the minpac plugin manager
 
 call SourceIfExists($HOME . "/.config/nvim/minpac.vim")
+call SourceIfExists($HOME . "/.config/nvim/vimwiki.vim")
 
 if(isdirectory(expand($HOME . "/.config/nvim/pack/minpac/start/vim-colors-solarized")))
     set background=dark
@@ -88,16 +89,25 @@ else
 endif
 
 " NERDtree
-" Toggle NERDtree on/off on F5
-nnoremap <f5> :NERDTreeToggle <CR>
-" Open NERDtree when vim is started
-autocmd vimenter * NERDTree | wincmd w | call SyncNerdTree()
-" Close NERDtree if all other buffers are closed
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Start NERDTree on VimEnter
+function! StartNerdTree()
+  "Omit starting NERDTree on vimwiki projekts
+  if &ft =~ 'vimwiki'
+    return
+  endif
+  " Start NERDTree
+  NERDTree
+  " Switch to the NERDTree buffer
+  wincmd w
+  " Sync the buffer to the current active file
+  call SyncNerdTree()
+endfunction
 
 " Sync NERDTree to current file, meaning navigate to open buffer if buffer is
 " writable
 function! SyncNerdTree()
+  " Don't show NERDTree when using vimwiki
   let isNerdTreeOpen = exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
   if &modifiable && isNerdTreeOpen && strlen(expand('%')) > 0 && !&diff
     NERDTreeFind
@@ -105,6 +115,23 @@ function! SyncNerdTree()
   endif
 endfunction
 
+" Toggle NERDtree on/off on F5
+nnoremap <f5> :NERDTreeToggle <CR>
+" Open NERDtree when vim is started
+autocmd VimEnter * call StartNerdTree()
+" Close NERDtree if all other buffers are closed
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" Re-sync the NERDTree buffer when a new file is opened
 autocmd BufEnter * call SyncNerdTree()
+
+"" BEGIN VimWiki configuration
+"  let s:vim_wiki_state_dir = s:EnsureDirectory($HOME."/.local/share/vimwiki")
+"
+"  let s:personal_wiki = {}
+"  let s:personal_wiki.path = s:vim_wiki_state_dir.'/personal/'
+"
+"  let g:vimwiki_list = [ s:personal_wiki ]
+"
+"" END VimWiki configuration
 
 set ts=4 sts=4 sw=4 expandtab
