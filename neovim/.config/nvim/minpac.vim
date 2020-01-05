@@ -32,6 +32,8 @@ if exists('*minpac#init')
   " Language specific plugins
   " Nix / NixOS
   call minpac#add('LnL7/vim-nix')
+  " Zig / Ziglang
+  call minpac#add('ziglang/zig.vim')
 endif
 
 " Plugin settings here.
