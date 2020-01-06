@@ -46,16 +46,13 @@ augroup VimWiki
   function! s:VimWikiStart()
     call s:GitPull()
     let s:timer = timer_start(1000 * 60 * 1, function('s:TimerHandler'), { 'repeat': -1 })
-    echoerr "timer start"
   endfunction
 
   function! s:VimWikiStop() 
     call s:GitPush()
-    echomsg "Stopped"
   endfunction
 
   function! s:TimerHandler(timer)
-    echoerr "Timer"
     call s:GitPush()
   endfunction
 
