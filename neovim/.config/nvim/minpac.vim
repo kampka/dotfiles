@@ -36,12 +36,18 @@ if exists('*minpac#init')
   call minpac#add('ziglang/zig.vim')
   " VimWiki
   call minpac#add('vimwiki/vimwiki')
+  " Terraform
+  call minpac#add('hashivim/vim-terraform')
 endif
 
 " Plugin settings here.
 
 let g:airline_solarized_bg='dark'
 let g:airline_powerline_fonts = 1
+
+" Terraform settings
+let g:terraform_align=1
+let g:terraform_fmt_on_save=1
 
 " Define user commands for updating/cleaning the plugins.
 " Each of them loads minpac, reloads .vimrc to register the
