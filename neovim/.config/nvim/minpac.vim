@@ -44,6 +44,10 @@ if exists('*minpac#init')
   
   " Terraform
   call minpac#add('hashivim/vim-terraform')
+
+  " TypeScript
+  call minpac#add('HerringtonDarkholme/yats.vim') " Syntax highlighting
+
 endif
 
 " Plugin settings here.
