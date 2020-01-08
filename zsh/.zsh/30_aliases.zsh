@@ -3,5 +3,5 @@ if (( $+commands[bat] )); then
 fi
 
 if (($+commands[nvim] )); then
-  alias wiki="nvim -c ':VimwikiIndex'"
+  alias wiki="nvim -c ':packadd vimwiki | VimwikiIndex'"
 fi

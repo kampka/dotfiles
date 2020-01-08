@@ -35,7 +35,8 @@ if exists('*minpac#init')
   " Zig / Ziglang
   call minpac#add('ziglang/zig.vim')
   " VimWiki
-  call minpac#add('vimwiki/vimwiki')
+  call minpac#add('vimwiki/vimwiki', {'type': 'opt'})
+  
   " Terraform
   call minpac#add('hashivim/vim-terraform')
 endif
