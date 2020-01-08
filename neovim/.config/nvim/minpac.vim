@@ -21,6 +21,11 @@ if exists('*minpac#init')
   call minpac#add('scrooloose/nerdtree')
   call minpac#add('bling/vim-bufferline')
 
+  " Denite is a generic fuzzy finder with more sources that fzf
+  call minpac#add('Shougo/denite.nvim')
+  " Deoplete auto completion plugin
+  call minpac#add('Shougo/deoplete.nvim')
+
   " FZF / Ctrlp for file navigation
   if executable('fzf')
     call minpac#add('junegunn/fzf')
@@ -45,6 +50,9 @@ endif
 
 let g:airline_solarized_bg='dark'
 let g:airline_powerline_fonts = 1
+
+" Deoplete
+let g:deoplete#enable_at_startup = 1
 
 " Terraform settings
 let g:terraform_align=1
