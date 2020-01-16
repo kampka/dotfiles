@@ -66,7 +66,7 @@ set encoding=utf8
 set fillchars=vert:│
 " Ensure the colorscheme does not impose backround color setting for vertical
 " split seperators. Otherwise, bg == fg might just fill the whole cell uniform
-autocmd ColorScheme * highlight VertSplit cterm=NONE ctermbg=NONE
+autocmd VimEnter,ColorScheme * highlight VertSplit cterm=NONE ctermbg=NONE
 
 " Remap the leader key to ,
 :let mapleader = ","
