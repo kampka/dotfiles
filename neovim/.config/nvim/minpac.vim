@@ -13,13 +13,19 @@ if exists('*minpac#init')
   call minpac#add('k-takata/minpac', {'type': 'opt'})
 
   " Additional plugins here.
-  call minpac#add('altercation/vim-colors-solarized')
+  call minpac#add('arcticicestudio/nord-vim')
+  " call minpac#add('altercation/vim-colors-solarized')
+
+  call minpac#add('itchyny/lightline.vim')
+  " call minpac#add('vim-airline/vim-airline')
+  " call minpac#add('vim-airline/vim-airline-themes')
+
   call minpac#add('tpope/vim-fugitive')
+  
   " call minpac#add('vim-jp/syntax-vim-ex')
-  call minpac#add('vim-airline/vim-airline')
-  call minpac#add('vim-airline/vim-airline-themes')
   call minpac#add('scrooloose/nerdtree')
   call minpac#add('bling/vim-bufferline')
+  call minpac#add('mbbill/undotree')
 
   " Denite is a generic fuzzy finder with more sources that fzf
   call minpac#add('Shougo/denite.nvim')
@@ -52,8 +58,14 @@ endif
 
 " Plugin settings here.
 
-let g:airline_solarized_bg='dark'
-let g:airline_powerline_fonts = 1
+colorscheme nord
+
+let g:lightline = {
+      \ 'colorscheme': 'nord',
+      \ }
+
+" let g:airline_solarized_bg='dark'
+" let g:airline_powerline_fonts = 1
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
@@ -61,6 +73,13 @@ let g:deoplete#enable_at_startup = 1
 " Terraform settings
 let g:terraform_align=1
 let g:terraform_fmt_on_save=1
+
+" Undotree
+nnoremap <C-U> :UndotreeToggle <CR>
+let g:undotree_WindowLayout = 4
+let g:undotree_HighlightChangedWithSign = 0
+let g:undotree_SplitWidth = 50
+let g:undotree_DiffpanelHeight = 15
 
 " Define user commands for updating/cleaning the plugins.
 " Each of them loads minpac, reloads .vimrc to register the
