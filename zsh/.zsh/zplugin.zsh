@@ -1,6 +1,8 @@
 zplugin load "zsh-users/zsh-completions"
 zplugin load "zsh-users/zsh-syntax-highlighting"
 
+zplugin load "denysdovhan/spaceship-prompt"
+
 zplugin snippet ~/.zsh/10_utils_git.zsh
 zplugin snippet ~/.zsh/25_direnv.zsh
 zplugin snippet ~/.zsh/25_gpg.zsh
