@@ -15,9 +15,6 @@ zplugin load "b4b4r07/enhancd"
 export ENHANCD_FILTER="fzf --height 50% --reverse --ansi --preview 'ls -l {}' --preview-window down"
 export ENHANCD_DOT_SHOW_FULLPATH=1
 
-zplugin ice silent wait"1" pick"zsh-vimode-visual.zsh"
-zplugin load "b4b4r07/zsh-vimode-visual"
-
 zplugin ice silent wait pick"nix-shell.plugin.zsh"
 zplugin load "chisui/zsh-nix-shell"
 
