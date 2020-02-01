@@ -1,4 +1,5 @@
 if (( $+commands[bat] )); then
+  export BAT_THEME="Nord"
   alias cat="bat -p --paging=never"
 fi
 
