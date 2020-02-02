@@ -24,7 +24,8 @@ if exists('*minpac#init')
   
   " call minpac#add('vim-jp/syntax-vim-ex')
   call minpac#add('scrooloose/nerdtree')
-  call minpac#add('bling/vim-bufferline')
+  " call minpac#add('bling/vim-bufferline')
+  call minpac#add('mengelbrecht/lightline-bufferline')
   call minpac#add('mbbill/undotree')
 
   " Denite is a generic fuzzy finder with more sources that fzf
@@ -60,9 +61,14 @@ endif
 
 colorscheme nord
 
-let g:lightline = {
-      \ 'colorscheme': 'nord',
-      \ }
+" Lightline
+set showtabline=2
+let g:lightline                  = { 'colorscheme': 'nord' }
+let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
+let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
+let g:lightline.component_type   = {'buffers': 'tabsel'}
+
+autocmd BufWritePost,TextChanged,TextChangedI * call lightline#update()
 
 " let g:airline_solarized_bg='dark'
 " let g:airline_powerline_fonts = 1
