@@ -41,6 +41,9 @@ if exists('*minpac#init')
     call minpac#add('ctrlpvim/ctrlp.vim')
   endif
 
+  " Tmux integration
+  call minpac#add('christoomey/vim-tmux-navigator')
+
   " Language specific plugins
   " Nix / NixOS
   call minpac#add('LnL7/vim-nix')
@@ -86,6 +89,17 @@ let g:undotree_WindowLayout = 4
 let g:undotree_HighlightChangedWithSign = 0
 let g:undotree_SplitWidth = 50
 let g:undotree_DiffpanelHeight = 15
+
+" Tmux Integration
+let g:tmux_navigator_no_mappings = 1
+
+" Disable tmux navigator when zooming the Vim pane
+let g:tmux_navigator_disable_when_zoomed = 1"
+
+nnoremap <silent> <C-Left> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-Down> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-Up> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-Right> :TmuxNavigateRight<cr>
 
 " Define user commands for updating/cleaning the plugins.
 " Each of them loads minpac, reloads .vimrc to register the
