@@ -74,6 +74,22 @@ spaceship_git_crypt() {
     "$SPACESHIP_GIT_CRYPT_SUFFIX"
 }
 
+# Shows selected AWS-cli profile.
+# https://github.com/denysdovhan/spaceship-prompt/pull/786
+spaceship_aws() {
+  [[ $SPACESHIP_AWS_SHOW == false ]] && return
+
+  # Is the current profile not the default profile
+  [[ -z $AWS_PROFILE ]] || [[ "$AWS_PROFILE" == "default" ]] && return
+
+  # Show prompt section
+  spaceship::section \
+    "$SPACESHIP_AWS_COLOR" \
+    "$SPACESHIP_AWS_PREFIX" \
+    "${SPACESHIP_AWS_SYMBOL}$AWS_PROFILE" \
+    "$SPACESHIP_AWS_SUFFIX"
+}
+
 autoload -U promptinit && promptinit
 
 local neworder=()
