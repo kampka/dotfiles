@@ -15,6 +15,7 @@ if exists('*minpac#init')
   " Additional plugins here.
   call minpac#add('arcticicestudio/nord-vim')
   " call minpac#add('altercation/vim-colors-solarized')
+  call minpac#add('ryanoasis/vim-devicons')
 
   call minpac#add('itchyny/lightline.vim')
   " call minpac#add('vim-airline/vim-airline')
