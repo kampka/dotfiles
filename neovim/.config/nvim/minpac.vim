@@ -45,6 +45,15 @@ if exists('*minpac#init')
   " Tmux integration
   call minpac#add('christoomey/vim-tmux-navigator')
 
+  " Plugins used for focused writing
+  " 
+  " goyo hides information that is not particularly useful
+  " for writing, eg. line numbers, NERDtree, etc.
+  call minpac#add('junegunn/goyo.vim')
+  " limelight blurs out paragraphs that are not currently
+  " in cursor focus
+  call minpac#add('junegunn/limelight.vim')
+
   " Language specific plugins
   " Nix / NixOS
   call minpac#add('LnL7/vim-nix')
@@ -101,6 +110,20 @@ nnoremap <silent> <C-Left> :TmuxNavigateLeft<cr>
 nnoremap <silent> <C-Down> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-Up> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-Right> :TmuxNavigateRight<cr>
+
+" goyo / limelight
+" automatically enable limelight when goyo is enabled
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+" Set limelight color scheme
+" If colorscheme is 'nord' set limelight concealment color
+" to nord3 (comments)
+if g:colors_name == "nord"
+    let g:limelight_conceal_ctermfg = 8
+endif
+" Use goyo and limelight on markdown files
+autocmd FileType markdown packadd goyo.vim
+autocmd FileType markdown packadd limelight.vim
 
 " Define user commands for updating/cleaning the plugins.
 " Each of them loads minpac, reloads .vimrc to register the
