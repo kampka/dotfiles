@@ -3,6 +3,7 @@ augroup VimWiki
 
   let s:personal_wiki = {}
   let s:personal_wiki.path = s:vim_wiki_state_dir."/personal/"
+  let s:personal_wiki.syntax = "markdown"
 
   let g:vimwiki_list = [ s:personal_wiki ]
 
@@ -61,4 +62,8 @@ augroup VimWiki
   au BufWritePost *.wiki call s:GitCommit()
   au BufEnter index.wiki call s:VimWikiStart()
   au QuitPre index.wiki call s:VimWikiStop()
+  " Enable goyo and limelight for vimwiki by default
+  au FileType vimwiki packadd goyo.vim
+  au FileType vimwiki packadd limelight.vim
+  au BufRead,BufNewFile *.wiki :Goyo 80
 augroup END
