@@ -64,7 +64,7 @@ SPACESHIP_GIT_CRYPT_SUFFIX="${SPACESHIP_GIT_CRYPT_SUFFIX=$SPACESHIP_PROMPT_DEFAU
 spaceship_git_crypt() {
   [[ $SPACESHIP_GIT_CRYPT_SHOW == false ]] && return
 
-  spaceship::is_git && git ls-tree -r master --name-only | sed 's/.*/"&"/' | xargs grep -qsPa "\x00GITCRYPT" || return
+  spaceship::is_git && git ls-tree -r $(git config init.defaultBranch) --name-only | sed 's/.*/"&"/' | xargs grep -qsPa "\x00GITCRYPT" || return
 
   # Display nix_shell section
   spaceship::section \

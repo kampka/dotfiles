@@ -23,3 +23,5 @@
 	guitool = meld
 [push]
 	default = nothing
+[init]
+	defaultBranch = main
