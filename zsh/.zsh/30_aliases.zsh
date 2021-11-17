@@ -5,6 +5,7 @@ fi
 
 if (($+commands[nvim] )); then
   alias wiki="nvim -c ':packadd vimwiki | VimwikiIndex'"
+  alias v="nvim"
 fi
 
 if (($+commands[exa] )); then
