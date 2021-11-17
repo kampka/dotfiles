@@ -6,3 +6,8 @@ fi
 if (($+commands[nvim] )); then
   alias wiki="nvim -c ':packadd vimwiki | VimwikiIndex'"
 fi
+
+if (($+commands[exa] )); then
+  alias ll="exa -lh --git --all --octal-permissions"
+  alias l="exa -lh --git --all --octal-permissions"
+fi
