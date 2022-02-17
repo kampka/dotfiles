@@ -12,3 +12,8 @@ if (($+commands[exa] )); then
   alias ll="exa -lh --git --all --octal-permissions"
   alias l="exa -lh --git --all --octal-permissions"
 fi
+
+if (($+commands[trash-put])); then
+  alias tp="trash-put"
+  alias rm="echo 'Use trash-put / tp to remove files or directories.'; false"
+fi
