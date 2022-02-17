@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/home/chris/Projekte/nixos/nixos-configurations/machines/laptops/spacemachine'
+let g:netrw_dirhist_0='/home/chris/Projekte/nixos/nixos-configurations/machines/laptops'
+let g:netrw_dirhist_9='/home/chris/Projekte/nixos/nixos-configurations/machines'
+let g:netrw_dirhist_8='/home/chris/Projekte/nixos/nixos-configurations'
+let g:netrw_dirhist_7='/home/chris/.dotfiles/neovim/.config/nvim/lua'
+let g:netrw_dirhist_6='/home/chris/.dotfiles/neovim/.config/nvim'
+let g:netrw_dirhist_5='/home/chris/.zplugin/plugins/_local---zinit'
+let g:netrw_dirhist_4='/home/chris/.dotfiles/neovim/.config/nvim/lua'
+let g:netrw_dirhist_3='/home/chris/.dotfiles/neovim/.config/nvim'
+let g:netrw_dirhist_2='/home/chris/.dotfiles/neovim/.config/nvim/lua'

@@ -1,0 +1,12 @@
+require("globals")
+require("plugins")
+
+require("languages.scala").setup()
+require("languages.docker").setup()
+require("languages.go").setup()
+require("languages.html").setup()
+require("languages.yaml").setup()
+require("languages.json").setup()
+require("languages.typescript").setup()
+require("languages.terraform").setup()
+require("languages.nix").setup()
