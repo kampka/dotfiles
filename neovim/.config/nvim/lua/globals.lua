@@ -1,3 +1,4 @@
+local api = vim.api
 local cmd = vim.cmd
 local fn = vim.fn
 local g = vim.g
@@ -74,3 +75,19 @@ if !isdirectory(expand(&undodir))
   call mkdir(expand(&undodir), "p")
 endif
 ]])
+
+local base_group = api.nvim_create_augroup("base", { clear = true })
+
+api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
+  pattern = { "*.md", "*.txt", "COMMIT_EDITMSG" },
+  command = "set wrap linebreak nolist spell spelllang=en_us complete+=kspell",
+  group = base_group,
+})
+
+
+-- Turn of hlsearch if the cursor moves after searching
+vim.on_key (function (char)
+  if vim.fn.mode() == 'n' then
+    vim.opt.hlsearch = vim.tbl_contains({'<CR>', "n", "N", "*", "#", "?", "/"}, vim.fn.keytrans(char))
+  end
+end, vim.api.nvim_create_namespace 'auto_hlsearch')

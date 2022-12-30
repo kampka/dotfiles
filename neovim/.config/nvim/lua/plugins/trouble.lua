@@ -5,7 +5,10 @@ M.setup = function(use)
     'folke/trouble.nvim', 
     config = function()
       trouble = require('trouble')
-      trouble.setup()
+      trouble.setup({
+--        auto_open = true, -- automatically open the list when you have diagnostics
+        auto_close = true, -- automatically close the list when you have no diagnostics
+      })
 
       local map = require('..functions').map
       map("n", "<leader>tn", [[<cmd>lua require("trouble").next({skip_groups = true, jump = true})<CR>]])

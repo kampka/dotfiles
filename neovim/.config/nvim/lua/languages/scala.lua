@@ -2,11 +2,11 @@ local M = {}
 
 M.setup = function()
   local cmd = vim.cmd
+  local api = vim.api
   vim.opt_global.shortmess:remove("F")
-  Metals_config = require("metals").bare_config()
+  metals_config = require("metals").bare_config()
 
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  Metals_config.settings = {
+  metals_config.settings = {
     showImplicitArguments = true,
     showInferredType = true,
     excludedPackages = {
@@ -15,14 +15,14 @@ M.setup = function()
       "akka.stream.javadsl",
     },
     serverProperties = {
-      "-Xms4G",
-      "-Xmx4G",
+      "-Xms8G",
+      "-Xmx8G",
     },
-    --fallbackScalaVersion = "2.13.6",
+    sbtScript = "sbt",
   }
 
-  Metals_config.init_options.statusBarProvider = "on"
-  Metals_config.capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+  metals_config.init_options.statusBarProvider = "on"
+  metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities();
 
   local dap = require("dap")
 
@@ -54,17 +54,22 @@ M.setup = function()
     },
   }
 
-  Metals_config.on_attach = function(client, bufnr)
+  metals_config.on_attach = function(client, bufnr)
     vim.cmd([[autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()]])
     vim.cmd([[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]])
     vim.cmd([[autocmd BufEnter,CursorHold,InsertLeave <buffer> lua vim.lsp.codelens.refresh()]])
+    vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync() ]])
 
     require("metals").setup_dap()
   end
-  cmd([[augroup scalalsp]])
-  cmd([[autocmd!]])
-  cmd([[autocmd FileType scala,sbt,java lua require("metals").initialize_or_attach(Metals_config)]])
-  cmd([[augroup END]])
+  local nvim_metals_group = api.nvim_create_augroup("nvim-metals", { clear = true })
+  api.nvim_create_autocmd("FileType", {
+    pattern = { "scala", "sbt", "java" },
+    callback = function()
+      require("metals").initialize_or_attach(metals_config)
+    end,
+    group = nvim_metals_group,
+  })
 end
 
 return M

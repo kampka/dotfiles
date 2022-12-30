@@ -15,17 +15,20 @@ M.setup = function(use)
           use_virtual_text = true,
           lint_events = { 'BufWrite', 'CursorHold' },
         },
-        ensure_installed = 'maintained',
+        ensure_installed = {},
         ignore_install = {
           'norg' -- norg is listed as installed but fails to build with zig atm
         },
         highlight = {
           enable = true,
-          disable = { 'scala' },
+          --disable = { 'scala' },
         },
         indent = {
           enable = true
-        }
+        },
+        autopairs = {
+          enable = true
+        }      
       })
     end
   })

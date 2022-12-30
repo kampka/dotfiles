@@ -6,6 +6,7 @@ local M = {}
 M.setup = function(use)
   use ({ 
     'shaunsingh/nord.nvim',
+--    'gbprod/nord.nvim',
     config = function()
       vim.cmd[[colorscheme nord]]
     end

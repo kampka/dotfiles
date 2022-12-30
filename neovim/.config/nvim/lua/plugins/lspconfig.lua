@@ -4,6 +4,18 @@ M.setup = function(use)
   use({ 
     'neovim/nvim-lspconfig',
     config = function()
+
+      local lsp_config = require("lspconfig")
+      lsp_config.util.default_config = vim.tbl_extend("force", lsp_config.util.default_config, {
+        capabilities = capabilities,
+      })
+
+      local hover_config = {
+        border = "single",
+      }
+
+      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, hover_config)
+
       local map = require('..functions').map
 
       map("n", "gD", [[<cmd>lua vim.lsp.buf.definition()<CR>]])
