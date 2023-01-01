@@ -1,3 +1,9 @@
+# Ignore neovim lazy.nvim lock file
+neovim/.config/nvim/lazy-lock.json
+
+# Ignore neovim packer compiled files
+neovim/.config/nvim/plugin/packer_compiled.lua
+
 # Ignore neovim plugins managed by minpac
 neovim/.config/nvim/pack/**
 

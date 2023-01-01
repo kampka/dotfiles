@@ -1,21 +1,18 @@
-local M = {}
+local M = {
+	"folke/trouble.nvim",
+	cmd = { "Trouble", "TroubleToggle" },
+	config = function()
+		trouble = require("trouble")
+		trouble.setup({
+			auto_open = false, -- automatically open the list when you have diagnostics
+			auto_close = true, -- automatically close the list when you have no diagnostics
+			use_diagnostic_signs = true,
+		})
 
-M.setup = function(use)
-  use({
-    'folke/trouble.nvim', 
-    config = function()
-      trouble = require('trouble')
-      trouble.setup({
---        auto_open = true, -- automatically open the list when you have diagnostics
-        auto_close = true, -- automatically close the list when you have no diagnostics
-      })
-
-      local map = require('..functions').map
-      map("n", "<leader>tn", [[<cmd>lua require("trouble").next({skip_groups = true, jump = true})<CR>]])
-      map("n", "<leader>tp", [[<cmd>lua require("trouble").previous({skip_groups = true, jump = true})<CR>]])
-
-    end
-  })
-end
+		local map = require("utils.functions").map
+		map("n", "<leader>tn", [[<cmd>lua require("trouble").next({skip_groups = true, jump = true})<CR>]])
+		map("n", "<leader>tp", [[<cmd>lua require("trouble").previous({skip_groups = true, jump = true})<CR>]])
+	end,
+}
 
 return M

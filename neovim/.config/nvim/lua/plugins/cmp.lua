@@ -1,55 +1,61 @@
-local M = {}
-
-M.setup = function(use)
-  -- nvim-cmp is a completion plugin for nvim
-  use({
-    'hrsh7th/nvim-cmp',
-    requires = {
-      { 'hrsh7th/cmp-buffer' },
-      { 'hrsh7th/cmp-nvim-lsp' },
-      { 'hrsh7th/cmp-path' },
-      { 'hrsh7th/cmp-vsnip' },
-      { 'hrsh7th/vim-vsnip' },
-    },
-    config = function()
-      local cmp = require("cmp")
-      cmp.setup({
-        sources = {
-          { name = "nvim_lsp", priority = 10 },
-          { name = "buffer" },
-          { name = "vsnip" },
-          { name = "path" },
-        },
-        snippet = {
-          expand = function(args)
-            -- Comes from vsnip
-            vim.fn["vsnip#anonymous"](args.body)
-          end,
-        },
-        mapping = {
-          -- None of this made sense to me when first looking into this since there
-          -- is no vim docs, but you can't have select = true here _unless_ you are
-          -- also using the snippet stuff. So keep in mind that if you remove
-          -- snippets you need to remove this select
-          ["<CR>"] = cmp.mapping.confirm({ select = true }),
-          ["<Tab>"] = function(fallback)
-            if cmp.visible() then
-              cmp.select_next_item()
-            else
-              fallback()
-            end
-          end,
-          ["<S-Tab>"] = function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item()
-            else
-              fallback()
-            end
-          end,
-        },
-      })
-    end
-  })
-end
+local M = {
+	"hrsh7th/nvim-cmp",
+	events = "InsertEnter",
+	dependencies = {
+		{ "hrsh7th/cmp-buffer" },
+		{ "hrsh7th/cmp-nvim-lsp" },
+		{ "hrsh7th/cmp-path" },
+		{ "hrsh7th/cmp-vsnip" },
+		{ "hrsh7th/vim-vsnip" },
+		{ "hrsh7th/cmp-emoji" },
+	},
+	config = function()
+		local cmp = require("cmp")
+		cmp.setup({
+			sources = {
+				{ name = "nvim_lsp", priority = 10 },
+				{ name = "buffer" },
+				{ name = "vsnip" },
+				{ name = "path" },
+				{ name = "emoji" },
+			},
+			snippet = {
+				expand = function(args)
+					-- Comes from vsnip
+					vim.fn["vsnip#anonymous"](args.body)
+				end,
+			},
+			formatting = {
+				format = require("plugins.lsp.kind").cmp_format(),
+			},
+			experimental = {
+				ghost_text = {
+					hl_group = "LspCodeLens",
+				},
+			},
+			mapping = {
+				-- None of this made sense to me when first looking into this since there
+				-- is no vim docs, but you can't have select = true here _unless_ you are
+				-- also using the snippet stuff. So keep in mind that if you remove
+				-- snippets you need to remove this select
+				["<CR>"] = cmp.mapping.confirm({ select = true }),
+				["<Tab>"] = function(fallback)
+					if cmp.visible() then
+						cmp.select_next_item()
+					else
+						fallback()
+					end
+				end,
+				["<S-Tab>"] = function(fallback)
+					if cmp.visible() then
+						cmp.select_prev_item()
+					else
+						fallback()
+					end
+				end,
+			},
+		})
+	end,
+}
 
 return M

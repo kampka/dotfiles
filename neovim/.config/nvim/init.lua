@@ -1,10 +1,4 @@
 require("globals")
-require("plugins")
+require("config.lazy")
 
-require("languages.scala").setup()
-require("languages.go").setup()
-require("languages.html").setup()
-require("languages.yaml").setup()
-require("languages.typescript").setup()
-require("languages.terraform").setup()
-require("languages.nix").setup()
+require("config.languages.scala").setup()
