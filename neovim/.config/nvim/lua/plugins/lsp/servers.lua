@@ -6,7 +6,7 @@ return {
 	dockerls = {},
 	tsserver = {},
 	svelte = {},
-	eslint = {},
+	-- eslint = {},
 	html = {},
 	jsonls = {
 		on_new_config = function(new_config)
