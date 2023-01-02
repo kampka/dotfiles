@@ -17,10 +17,11 @@ function M.config()
 		},
 		sections = {
 			lualine_a = { "mode" },
-			lualine_b = { "branch", "diff", { "diagnostics", sources = { "nvim_diagnostic" } } },
+			lualine_b = { "branch", "diff" },
 			lualine_c = {
-				{ "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-				{ "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } },
+				{ "diagnostics", sources = { "nvim_diagnostic" } },
+				--				{ "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+				--				{ "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } },
 				metals_status,
 				{
 					function()
