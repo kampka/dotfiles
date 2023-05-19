@@ -1,0 +1,17 @@
+# Kill Firefox sharing indicator. It opens as an own container. Does not kill functionality
+for_window [title = "Firefox - Sharing Indicator"] kill
+for_window [title = "Firefox — Sharing Indicator"] kill
+
+for_window [class = "(?i)pinentry"] floating enable
+for_window [app_id = "nm-connection-editor"] floating enable
+
+for_window [app_id = "pavucontrol"] floating enable
+for_window [app_id = "blueberry.py"] floating enable
+for_window [app_id = "blueman-manager"] floating enable
+
+for_window [app_id = "jetbrains-*"] floating enable
+
+for_window [app_id = "tuple*"] floating enable
+
+# Tag xwayland windows with [X]
+for_window [shell="xwayland"] title_format "<span>[X] %title</span>"
