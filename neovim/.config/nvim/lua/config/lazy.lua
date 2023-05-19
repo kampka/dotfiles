@@ -15,7 +15,7 @@ vim.opt.runtimepath:prepend(lazypath)
 require("lazy").setup("plugins", {
 	defaults = { lazy = true },
 	install = { colorscheme = { "nord" } },
-	checker = { enabled = true },
+	checker = { enabled = true, frequency = 3600 * 24 * 4 },
 	diff = {
 		cmd = "terminal_git",
 	},
