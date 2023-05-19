@@ -1,3 +1,5 @@
+[core]
+	pager = delta
 [user]
 	name = Christian Kampka
 	email = christian@kampka.net
@@ -14,14 +16,24 @@
 	pager = true
 	ui = auto
 [merge]
+	conflictstyle = diff3
 	tool = meld
 [alias]
 	uncommit = reset --soft HEAD^
 	bdiff = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|main\\|live\\|develop' | xargs -n 1 -r git branch -d"
+	recommit = !git commit -eF $(git rev-parse --git-dir)/COMMIT_EDITMSG
 [diff]
-	tool = vimdiff
-	guitool = meld
+	colorMoved = default
 [push]
 	default = nothing
 [init]
 	defaultBranch = main
+[url "ssh://git@gitlab.com/"]
+	insteadOf = https://gitlab.com/
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	light = false
+	line-numbers = true
