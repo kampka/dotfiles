@@ -10,12 +10,16 @@ function M.setup(options)
 		debounce = 150,
 		save_after_format = false,
 		sources = {
-			formatting.stylua,
-			formatting.fish_indent,
-			formatting.shfmt,
 			diagnostics.mdl, -- markdown-lint
+			-- formatting.eslint_d,
+			formatting.deno_fmt.with({
+				filetypes = { "javascript", "javascriptreact", "json", "jsonc", "typescript", "typescriptreact" },
+			}),
+			formatting.fish_indent,
 			formatting.isort,
-			formatting.eslint_d,
+			formatting.shfmt,
+			formatting.stylua,
+			formatting.taplo,
 			formatting.alejandra.with({
 				condition = function(utils)
 					-- hacky way that the current project is not nixos/nixpkgs,
