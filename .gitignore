@@ -12,3 +12,9 @@ fonts/**/.uuid
 
 # Ignore zsh history database
 history/**/history.ltsv
+
+# Ignore tmux plugins
+tmux/.config/tmux/plugins
+
+# Ignore zsh zinit plugins
+zsh/.config/zsh/.zinit
