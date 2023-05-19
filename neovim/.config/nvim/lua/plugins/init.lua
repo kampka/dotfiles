@@ -55,4 +55,9 @@ return {
 		"scalameta/nvim-metals",
 		requires = { "nvim-lua/plenary.nvim" },
 	},
+	{
+		"smjonas/inc-rename.nvim",
+		cmd = "IncRename",
+		config = true,
+	},
 }
