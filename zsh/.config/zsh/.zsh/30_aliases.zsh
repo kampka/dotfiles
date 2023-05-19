@@ -17,3 +17,11 @@ if (($+commands[trash-put])); then
   alias tp="trash-put"
   alias rm="echo 'Use trash-put / tp to remove files or directories.'; false"
 fi
+
+if (($+commands[idea-community])); then
+  alias idea="idea-community . &>/dev/null &"
+fi
+
+if (($+commands[glab])); then
+  alias mrc="glab mr create -f -y | tee $(tty) | grep -o -E \"https://gitlab.com/.+/merge_requests/[0-9]+$\" | wl-copy"
+fi

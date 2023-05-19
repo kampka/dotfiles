@@ -1,3 +1,16 @@
+# Autostart sway
+
+if (( $+commands[sway] )); then
+    export XDG_SESSION_TYPE=wayland
+    export XDG_CURRENT_DESKTOP=sway
+    if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+        exec sway
+    fi
+    if [ -n "$DISPLAY" ]; then
+        export WAYLAND_DISPLAY=$(ls $XDG_RUNTIME_DIR/wayland-* | grep -v "\.lock$")
+        export SWAYSOCK=$(ls -Art $XDG_RUNTIME_DIR/sway-ipc.*.sock | head -n 1)
+    fi
+fi
 # Setup 256color terminal
 export TERM=xterm-256color
 [ -n "$TMUX" ] && export TERM=screen-256color
@@ -27,6 +40,6 @@ if [[ -f ${ZINIT_HOME}/zinit.zsh ]]; then
     (( ${+_comps} )) && _comps[zinit]=_zinit
 
     # Initialize our own setup from dotfiles
-    source ${HOME}/.zsh/zinit.zsh
+    source ${HOME}/.config/zsh/.zsh/zinit.zsh
 fi
 
