@@ -3,6 +3,7 @@ local M = {
 	event = "BufReadPre",
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
+		"b0o/SchemaStore.nvim",
 	},
 }
 
@@ -36,6 +37,13 @@ function M.config()
 		opts = vim.tbl_deep_extend("force", {}, options, opts or {})
 		if server == "tsserver" then
 			require("typescript").setup({ server = opts })
+		elseif server == "denols" then
+			-- Denols does not play well with node projects
+			-- If we detect a package.json, presume it's a node project
+			-- and skip over the denols setup
+			if not require("lspconfig").util.root_pattern("package.json")(".") then
+				require("lspconfig")[server].setup(opts)
+			end
 		else
 			require("lspconfig")[server].setup(opts)
 		end

@@ -1,14 +1,25 @@
 return {
 	ansiblels = {},
-	bashls = {},
+	astro = {},
+	--bashls = {},
 	clangd = {},
 	cssls = {},
 	dockerls = {},
-	tsserver = {},
+	kotlin_language_server = {},
+	tsserver = {
+		root_dir = require("null-ls.utils").root_pattern("package.json"),
+	},
+	denols = {
+		root_dir = require("null-ls.utils").root_pattern("deno.json", "deno.jsonc"),
+		init = {
+			lint = true,
+		},
+	},
 	svelte = {},
 	-- eslint = {},
 	html = {},
 	jsonls = {
+		cmd = { "vscode-json-languageserver", "--stdio" },
 		on_new_config = function(new_config)
 			new_config.settings.json.schemas = new_config.settings.json.schemas or {}
 			vim.list_extend(new_config.settings.json.schemas, require("schemastore").json.schemas())
@@ -43,9 +54,12 @@ return {
 			},
 		},
 	},
-	yamlls = {},
-	-- tailwindcss = {},
-
+	yamlls = {
+		on_new_config = function(new_config)
+			new_config.settings.yaml.schemas = new_config.settings.yaml.schemas or {}
+			vim.list_extend(new_config.settings.yaml.schemas, require("schemastore").yaml.schemas())
+		end,
+	},
 	rnix = {},
 	terraformls = {},
 }
