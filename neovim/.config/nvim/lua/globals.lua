@@ -50,21 +50,18 @@ wo.relativenumber = true
 -- configure nvim diagnostics (requires nvim 0.6)
 vim.diagnostic.config({ virtual_text = false })
 
-
 -- Store backups. Not everything is under version control, and the eventual
 -- 'git clean' might remove things I don't mean to remove
-local backupdir = vim.fn.stdpath('cache') .. '/backup'
+local backupdir = vim.fn.stdpath("cache") .. "/backup"
 vim.o.backup = true
 vim.o.backupdir = backupdir
 
-
 -- Allow undoing after a file is closed.
-local undodir = vim.fn.stdpath('cache') .. '/undo'
+local undodir = vim.fn.stdpath("cache") .. "/undo"
 vim.o.undofile = true
 vim.o.undodir = undodir
 
-vim.o.undolevels=1000
-
+vim.o.undolevels = 1000
 
 -- Ensure directories exist
 vim.cmd([[
@@ -79,15 +76,18 @@ endif
 local base_group = api.nvim_create_augroup("base", { clear = true })
 
 api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
-  pattern = { "*.md", "*.txt", "COMMIT_EDITMSG" },
-  command = "set wrap linebreak nolist spell spelllang=en_us complete+=kspell",
-  group = base_group,
+	pattern = { "*.md", "*.txt", "COMMIT_EDITMSG" },
+	command = "set wrap linebreak nolist spell spelllang=en_us complete+=kspell",
+	group = base_group,
 })
 
-
 -- Turn of hlsearch if the cursor moves after searching
-vim.on_key (function (char)
-  if vim.fn.mode() == 'n' then
-    vim.opt.hlsearch = vim.tbl_contains({'<CR>', "n", "N", "*", "#", "?", "/"}, vim.fn.keytrans(char))
-  end
-end, vim.api.nvim_create_namespace 'auto_hlsearch')
+vim.on_key(function(char)
+	if vim.fn.mode() == "n" then
+		vim.opt.hlsearch = vim.tbl_contains({ "<CR>", "n", "N", "*", "#", "?", "/" }, vim.fn.keytrans(char))
+	end
+end, vim.api.nvim_create_namespace("auto_hlsearch"))
+
+-- Key mappings
+vim.api.nvim_set_keymap("n", "<C-u>", "<C-u>zz", { noremap = true })
+vim.api.nvim_set_keymap("n", "<C-d>", "<C-d>zz", { noremap = true })
