@@ -10,7 +10,7 @@ end
 function M.config()
 	require("lualine").setup({
 		options = {
-			theme = "nord",
+			theme = "catppuccin",
 			icons_enabled = true,
 			globalstatus = true,
 			disabled_filetypes = { statusline = { "dashboard", "lazy" } },
@@ -35,7 +35,7 @@ function M.config()
 							return navic.is_available()
 						end
 					end,
-					color = { fg = "#ff9e64" },
+					--color = { fg = "#ff9e64" },
 				},
 			},
 			lualine_x = { "encoding" },

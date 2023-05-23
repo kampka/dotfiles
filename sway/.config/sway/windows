@@ -11,7 +11,7 @@ for_window [app_id = "blueman-manager"] floating enable
 
 for_window [app_id = "jetbrains-*"] floating enable
 
-for_window [app_id = "tuple*"] floating enable
+for_window [app_id = "app.tuple.app"] floating enable
 
 # Tag xwayland windows with [X]
 for_window [shell="xwayland"] title_format "<span>[X] %title</span>"

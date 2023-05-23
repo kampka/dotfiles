@@ -30,13 +30,9 @@
 		},
 		"format-icons": {
 			"1": "☕",
-			"2": ""
+      "2": "",
+			"3": ""
 		}
-	},
-	"custom/date": {
-		"format": "󰸗 {}",
-		"interval": 3600,
-		"exec": "/home/loki/bin/waybar-date.sh"
 	},
 	"clock": {
 		"format": "{:%Y-%m-%d %H:%M}",
@@ -62,13 +58,13 @@
 		"format-wifi": "  {essid}",
 		"format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
 		"format-linked": "{ifname} (No IP) ",
-		"format-disconnected": "󰤮 Disconnected",
+		"format-disconnected": "  Disconnected",
 		"format-alt": "{ifname}: {ipaddr}/{cidr}"
 	},
 	"pulseaudio": {
 		"format": "{icon}  {volume}%",
 		"format-bluetooth": "{volume}% {icon}",
-		"format-muted": " Muted",
+		"format-muted": "  Muted",
 		"format-icons": {
 			"headphone": "",
 			"hands-free": "",
