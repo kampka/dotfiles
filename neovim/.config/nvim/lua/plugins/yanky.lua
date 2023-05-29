@@ -6,6 +6,9 @@ local M = {
 	opts = {
 		--	highlight = { timer = 150 },
 		-- ring = { storage = "sqlite" },
+		system_clipboard = {
+			sync_with_ring = true,
+		},
 	},
 	keys = {
 		{
