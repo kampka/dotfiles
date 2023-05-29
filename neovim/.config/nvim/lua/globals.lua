@@ -15,6 +15,8 @@ opt.shiftwidth = indent
 opt.softtabstop = indent
 opt.expandtab = true
 
+opt.clipboard = "unnamedplus"
+
 opt.fileformat = "unix"
 
 -- ignore case in search pattern like / or ?
