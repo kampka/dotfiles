@@ -1,6 +1,7 @@
 local M = {
 	"folke/trouble.nvim",
-	cmd = { "Trouble", "TroubleToggle" },
+	dependencies = { "which-key.nvim" },
+	event = "VeryLazy",
 	config = function()
 		trouble = require("trouble")
 		trouble.setup({
@@ -9,9 +10,23 @@ local M = {
 			use_diagnostic_signs = true,
 		})
 
-		local map = require("utils.functions").map
-		map("n", "<leader>tn", [[<cmd>lua require("trouble").next({skip_groups = true, jump = true})<CR>]])
-		map("n", "<leader>tp", [[<cmd>lua require("trouble").previous({skip_groups = true, jump = true})<CR>]])
+		require("which-key").register({
+			t = {
+				name = "Trouble", -- optional group name
+				n = {
+					"<cmd>lua require('trouble').next({skip_groups = true, jump = true})<CR>",
+					"Jump to next item in Trouble list",
+				},
+				p = {
+					"<cmd>lua require('trouble').previous({skip_groups = true, jump = true})<CR>",
+					"Jump to previous item in Trouble list",
+				},
+				t = {
+					"<cmd>lua require('trouble').toggle()<CR>",
+					"Toggle Trouble",
+				},
+			},
+		}, { prefix = "<leader>" })
 	end,
 }
 
