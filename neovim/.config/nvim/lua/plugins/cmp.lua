@@ -8,23 +8,11 @@ local M = {
 		{ "hrsh7th/cmp-vsnip" },
 		{ "hrsh7th/vim-vsnip" },
 		{ "hrsh7th/cmp-emoji" },
-		{
-			{
-				"zbirenbaum/copilot-cmp",
-				dependencies = { "copilot.lua" },
-				opts = {},
-				config = function(_, opts)
-					local copilot_cmp = require("copilot_cmp")
-					copilot_cmp.setup(opts)
-				end,
-			},
-		},
 	},
 	config = function()
 		local cmp = require("cmp")
 		cmp.setup({
 			sources = {
-				{ name = "copilot", priority = 2 },
 				{ name = "nvim_lsp", priority = 10 },
 				{ name = "buffer" },
 				{ name = "vsnip" },
