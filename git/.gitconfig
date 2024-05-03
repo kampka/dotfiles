@@ -6,7 +6,7 @@
 	signingkey = 0x1CBE9645DD68E915
 	editor = vim
 [commit]
-    gpgSign = true
+    gpgSign = false
 [sendemail]
 	smtpEncryption = tls
 	smtpServer = smtp.gmail.com
