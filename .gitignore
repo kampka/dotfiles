@@ -18,3 +18,4 @@ tmux/.config/tmux/plugins
 
 # Ignore zsh zinit plugins
 zsh/.config/zsh/.zinit
+zsh/.config/zsh/.zcompdump
