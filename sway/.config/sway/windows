@@ -1,6 +1,11 @@
+
 # Kill Firefox sharing indicator. It opens as an own container. Does not kill functionality
 for_window [title = "Firefox - Sharing Indicator"] kill
 for_window [title = "Firefox — Sharing Indicator"] kill
+
+for_window [app_id="^firefox$" title="^Extension: \(Bitwarden - Free Password Manager\) - Bitwarden — Mozilla Firefox$"] exec "sleep 0.01; swaymsg floating enable; swaymsg floating disable; swaymsg floating enable"
+#for_window [app_id="^firefox$" title="^Extension: \(Bitwarden - Free Password Manager\) - Bitwarden — Mozilla Firefox$"] move scratchpad, resize set width 435 px height 600 px, scratchpad show
+#for_window [app_id = "firefox" title = "^Extension: \(Bitwarden.*"] floating enable, resize set 600 600
 
 for_window [class = "(?i)pinentry"] floating enable
 for_window [app_id = "nm-connection-editor"] floating enable
@@ -13,5 +18,10 @@ for_window [app_id = "jetbrains-*"] floating enable
 
 for_window [app_id = "app.tuple.app"] floating enable
 
+# Bitwarden browser extension for chrome when opening the passkey selection window
+for_window [app_id = "chrome-nngceckbapebfimnlniiiahkandclblb-Default"] floating enable
+
 # Tag xwayland windows with [X]
 for_window [shell="xwayland"] title_format "<span>[X] %title</span>"
+
+# vi: ft=swayconfig
