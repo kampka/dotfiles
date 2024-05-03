@@ -1,16 +1,15 @@
 return {
 	-- fugitive is THE git integration for vim
-	"tpope/vim-fugitive",
+	{
+		"tpope/vim-fugitive",
+		event = "VeryLazy",
+	},
 
 	-- dev icons 🤷
 	{
 		"nvim-tree/nvim-web-devicons",
 		config = { default = true },
 	},
-
-	-- adds a set of functions for working with
-	-- sandwich objects like brakets or quotes
-	"machakann/vim-sandwich",
 
 	-- show virtual line indentation markers
 	"lukas-reineke/indent-blankline.nvim",
