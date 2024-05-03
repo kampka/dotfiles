@@ -60,6 +60,6 @@ return {
 			vim.list_extend(new_config.settings.yaml.schemas, require("schemastore").yaml.schemas())
 		end,
 	},
-	rnix = {},
+	nil_ls = {},
 	terraformls = {},
 }
