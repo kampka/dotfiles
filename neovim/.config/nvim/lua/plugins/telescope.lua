@@ -13,7 +13,7 @@ local M = {
 		local trouble = require("trouble.providers.telescope")
 		require("telescope").setup({
 			defaults = {
-				file_ignore_patterns = { "target", "node_modules", "parser.c", "out" },
+				file_ignore_patterns = { "package-lock.json", "go.mod", "go.sum" },
 				prompt_prefix = "❯",
 				file_previewer = require("telescope.previewers").vim_buffer_cat.new,
 				grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
